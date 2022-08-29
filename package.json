@@ -1,0 +1,28 @@
+{
+  "dependencies": {
+    "express": "^4.18.1",
+    "firebase": "^9.9.3",
+    "firebase-admin": "^11.0.1",
+    "nodemon": "^2.0.19"
+  },
+  "name": "pedidos_henrique_cole",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HenriqueCole/pedidos_henrique_cole.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HenriqueCole/pedidos_henrique_cole/issues"
+  },
+  "homepage": "https://github.com/HenriqueCole/pedidos_henrique_cole#readme"
+}
