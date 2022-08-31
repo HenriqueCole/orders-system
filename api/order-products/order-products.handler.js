@@ -19,6 +19,13 @@ async function createOrderProduct(data) {
       Error: `Order with id ${orderProduct.OrderId} not found`,
     };
   }
+  const orderGot = orders.find((order) => order.id === orderProduct.OrderId);
+
+  if (orderGot.Status == "closed") {
+    throw {
+      Error: "You can not add products to a closed order",
+    };
+  }
 
   const product = products.find(
     (product) => product.id === orderProduct.ProductId

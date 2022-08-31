@@ -4,8 +4,7 @@ const usersHandler = require("../users/users.handler");
 async function createOrder(data) {
   const users = await usersHandler.getUsers();
   const orders = await getOrders();
-  //Only be able to create an new order when the order created is "CLOSED"
-  //If the user create an another order, it should get the last order and make Number + 1
+
   const order = {
     Number: 0,
     UserId: data.UserId,
