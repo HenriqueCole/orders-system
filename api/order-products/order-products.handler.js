@@ -13,9 +13,12 @@ async function createOrderProduct(data) {
     Quantity: data.Quantity,
   };
 
-  const ordersIds = orders.map((order) => order.OrderId);
-
-  console.log(ordersIds.id);
+  const order = orders.find((order) => order.id === orderProduct.OrderId);
+  if (!order) {
+    throw {
+      Error: `Order with id ${orderProduct.OrderId} not found`,
+    };
+  }
 
   const product = products.find(
     (product) => product.id === orderProduct.ProductId
@@ -27,12 +30,13 @@ async function createOrderProduct(data) {
       Error: `Product with id ${orderProduct.ProductId} not found.`,
     };
   }
-  // const savedOrderProduct = await crud.post(
-  //   "OrderProducts",
-  //   null,
-  //   orderProduct
-  // );
-  // return savedOrderProduct;
+
+  const savedOrderProduct = await crud.post(
+    "OrderProducts",
+    null,
+    orderProduct
+  );
+  return savedOrderProduct;
 }
 
 async function getOrderProducts() {

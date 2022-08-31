@@ -27,7 +27,7 @@ router.get("/orders", (req, res) => {
 
 router.put("/orders/:id", (req, res) => {
   ordersHandler
-    .updateStatus(req.params.id, req.body.Status)
+    .updateStatus(req.params.id)
     .then((result) => {
       res.status(200).json(result);
     })
