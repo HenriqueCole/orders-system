@@ -8,6 +8,11 @@ async function getOrderProducts() {
   return orderProducts;
 }
 
+async function getOrderProductById(OrderProductId) {
+  const orderProduct = await crud.getById("OrderProducts", OrderProductId);
+  return orderProduct;
+}
+
 async function createOrderProduct(data) {
   const products = await productHandler.getProducts();
   const orders = await ordersHandler.getOrders();
@@ -71,20 +76,34 @@ async function createOrderProduct(data) {
 
 async function removeQuantity(id, data) {
   const orderProducts = await crud.get("OrderProducts");
-  const orderProduct = orderProducts.find(
-    (orderProduct) => orderProduct.id == id
+  const orders = await ordersHandler.getOrders();
+  const products = await productHandler.getProducts();
+  const orderProductById = await crud.getById("OrderProducts", id);
+
+  const orderProduct = {
+    OrderProductId: id,
+    OrderId: data.OrderId,
+    ProductId: data.ProductId,
+    Quantity: data.Quantity,
+  };
+
+  const orderProductExists = orderProducts.find(
+    (orderProduct) =>
+      orderProduct.OrderId === data.OrderId &&
+      orderProduct.ProductId === data.ProductId
   );
 
-  if (!orderProduct) {
+  const checkOrderProductId = orderProducts.find(
+    (orderProduct) => orderProduct.id === id
+  );
+
+  if (!checkOrderProductId) {
     throw {
       Error: `OrderProduct with id ${id} not found.`,
     };
   }
 
-  const orders = await ordersHandler.getOrders();
-  console.log("ORDERS", orders);
   const order = orders.find((order) => order.id === orderProduct.OrderId);
-  console.log("ORDER", order);
   if (!order) {
     throw {
       Error: `Order with id ${orderProduct.OrderId} not found`,
@@ -97,35 +116,51 @@ async function removeQuantity(id, data) {
     };
   }
 
-  const orderProductExists = orderProducts.find(
-    (orderProduct) =>
-      orderProduct.OrderId === data.OrderId &&
-      orderProduct.ProductId === data.ProductId
+  const product = products.find(
+    (product) => product.id === orderProduct.ProductId
   );
 
-  if (orderProductExists) {
-    const newQuantity = orderProductExists.Quantity - data.Quantity;
+  console.log("AAAAAAAAA", orderProductById);
 
-    if (newQuantity < 0) {
-      throw {
-        Error: "You can not remove more products than the order has",
-      };
-    } else if (newQuantity == 0) {
-      await crud.remove("OrderProducts", orderProductExists.id);
-    }
-
-    await crud.post("OrderProducts", orderProductExists.id, {
-      Quantity: newQuantity,
-      OrderId: orderProductExists.OrderId,
-      ProductId: orderProductExists.ProductId,
-    });
-
-    return orderProductExists;
+  if (orderProductById.ProductId !== orderProduct.ProductId) {
+    throw {
+      Error: `The product id ${orderProduct.ProductId} does not match the product id ${orderProductById.ProductId}`,
+    };
   }
+
+  if (!product) {
+    throw {
+      Error: `Product with id ${orderProduct.ProductId} not found.`,
+    };
+  } else if (orderProduct.Quantity <= 0) {
+    throw {
+      Error: "Quantity must be greater than 0",
+    };
+  }
+
+  const newQuantity = orderProductExists.Quantity - data.Quantity;
+
+  if (newQuantity === 0) {
+    await crud.remove("OrderProducts", orderProductExists.id);
+    return orderProductExists;
+  } else if (newQuantity < 0) {
+    throw {
+      Error: `You can not remove more products than you have in the order.`,
+    };
+  }
+
+  await crud.post("OrderProducts", orderProductExists.id, {
+    Quantity: newQuantity,
+    OrderId: orderProductExists.OrderId,
+    ProductId: orderProductExists.ProductId,
+  });
+
+  return orderProductExists;
 }
 
 module.exports = {
   createOrderProduct,
   getOrderProducts,
   removeQuantity,
+  getOrderProductById,
 };
