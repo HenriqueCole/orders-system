@@ -13,9 +13,9 @@ This is a simple example of a web application that uses the firebase-admin and f
 
 [Firebase Get Started](https://firebase.google.com/docs/functions/get-started)
 
-[Firebase QuickStart](firebase.google.com/docs/hosting/quickstart)
+[Firebase QuickStart](https://firebase.google.com/docs/hosting/quickstart)
 
-[Firebase Documentation](firebase.google.com/docs/firestore)
+[Firebase Documentation](https://firebase.google.com/docs/firestore)
 
 ## Coded with ❤️ by
 
