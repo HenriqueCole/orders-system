@@ -120,8 +120,6 @@ async function removeQuantity(id, data) {
     (product) => product.id === orderProduct.ProductId
   );
 
-  console.log("AAAAAAAAA", orderProductById);
-
   if (orderProductById.ProductId !== orderProduct.ProductId) {
     throw {
       Error: `The product id ${orderProduct.ProductId} does not match the product id ${orderProductById.ProductId}`,
