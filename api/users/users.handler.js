@@ -10,7 +10,13 @@ async function getUsers() {
   return users;
 }
 
+async function getUserById(id) {
+  const user = await crud.getById("Users", id);
+  return user;
+}
+
 module.exports = {
   createUser,
   getUsers,
+  getUserById,
 };

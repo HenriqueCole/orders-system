@@ -25,4 +25,15 @@ router.get("/users", (req, res) => {
     });
 });
 
+router.get("/users/:id", (req, res) => {
+  usersHandler
+    .getUserById(req.params.id)
+    .then((result) => {
+      res.status(200).json(result);
+    })
+    .catch((err) => {
+      res.status(500).json(err);
+    });
+});
+
 module.exports = router;
