@@ -50,6 +50,11 @@ async function getOrderById(id) {
 
 async function updateStatus(OrderId) {
   for (let order of await getOrders()) {
+    if (order.id === OrderId && order.Status === "closed") {
+      throw {
+        Error: "The order is already closed",
+      };
+    }
     if (order.id == OrderId) {
       order.Status = "closed";
       delete order.id;
