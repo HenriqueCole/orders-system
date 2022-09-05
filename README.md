@@ -9,14 +9,6 @@ This is a simple example of a web application that uses the firebase-admin and f
 3. Run `npm start`
 4. Open [http://localhost:8080/api/] after the api, you can search by products, orders, users and order-products.
 
-## Learn More
-
-[Firebase Get Started](https://firebase.google.com/docs/functions/get-started)
-
-[Firebase QuickStart](https://firebase.google.com/docs/hosting/quickstart)
-
-[Firebase Documentation](https://firebase.google.com/docs/firestore)
-
 ## Technologies
 
 - [Node.js](https://nodejs.org/en/)
@@ -24,6 +16,14 @@ This is a simple example of a web application that uses the firebase-admin and f
 - [Firebase](https://firebase.google.com/)
 - [JavaScript](https://www.javascript.com/)
 - [Postman](https://www.postman.com/)
+
+## Learn More
+
+[Firebase Get Started](https://firebase.google.com/docs/functions/get-started)
+
+[Firebase QuickStart](https://firebase.google.com/docs/hosting/quickstart)
+
+[Firebase Documentation](https://firebase.google.com/docs/firestore)
 
 ## Coded with ❤️ by
 
