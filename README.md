@@ -17,10 +17,6 @@ This is a simple example of a web application that uses the firebase-admin and f
 
 [Firebase Documentation](https://firebase.google.com/docs/firestore)
 
-## Coded with ❤️ by
-
-- [@HenriqueCole](https://www.github.com/HenriqueCole)
-
 ## Technologies
 
 - [Node.js](https://nodejs.org/en/)
@@ -28,3 +24,7 @@ This is a simple example of a web application that uses the firebase-admin and f
 - [Firebase](https://firebase.google.com/)
 - [JavaScript](https://www.javascript.com/)
 - [Postman](https://www.postman.com/)
+
+## Coded with ❤️ by
+
+- [@HenriqueCole](https://www.github.com/HenriqueCole)
