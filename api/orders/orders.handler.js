@@ -18,12 +18,7 @@ async function createOrder(data) {
     };
   }
 
-  console.log("USER:", user);
   const orderUser = orders.filter((order) => user.id === order.UserId);
-
-  console.log(order);
-
-  console.log("AAAAAAAA", orderUser);
 
   for (let order of orderUser) {
     if (order.Status == "open") {
