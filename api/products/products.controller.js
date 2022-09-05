@@ -25,4 +25,15 @@ router.get("/products", (req, res) => {
     });
 });
 
+router.get("/products/:id", (req, res) => {
+  productsHandler
+    .getProductById(req.params.id)
+    .then((result) => {
+      res.status(200).json(result);
+    })
+    .catch((err) => {
+      res.status(500).json(err);
+    });
+});
+
 module.exports = router;

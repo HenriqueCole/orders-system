@@ -48,6 +48,11 @@ async function getOrders() {
   return orders;
 }
 
+async function getOrderById(id) {
+  const order = await crud.getById("Orders", id);
+  return order;
+}
+
 async function updateStatus(OrderId) {
   for (let order of await getOrders()) {
     if (order.id == OrderId) {
@@ -66,4 +71,5 @@ module.exports = {
   createOrder,
   getOrders,
   updateStatus,
+  getOrderById,
 };

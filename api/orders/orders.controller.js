@@ -25,6 +25,17 @@ router.get("/orders", (req, res) => {
     });
 });
 
+router.get("/orders/:id", (req, res) => {
+  ordersHandler
+    .getOrderById(req.params.id)
+    .then((result) => {
+      res.status(200).json(result);
+    })
+    .catch((err) => {
+      res.status(500).json(err);
+    });
+});
+
 router.put("/orders/:id", (req, res) => {
   ordersHandler
     .updateStatus(req.params.id)

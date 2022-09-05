@@ -10,7 +10,13 @@ async function getProducts() {
   return products;
 }
 
+async function getProductById(id) {
+  const product = await crud.getById("Products", id);
+  return product;
+}
+
 module.exports = {
   createProduct,
   getProducts,
+  getProductById,
 };
