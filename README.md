@@ -11,11 +11,11 @@ This is a simple example of a web application that uses the firebase-admin and f
 
 ## Learn More
 
-[link](firebase.google.com/docs/functions/get-started)
+[Firebase Get Started](firebase.google.com/docs/functions/get-started)
 
-firebase.google.com/docs/hosting/quickstart
+[Firebase QuickStart](firebase.google.com/docs/hosting/quickstart)
 
-firebase.google.com/docs/firestore
+[Firebase Documentation](firebase.google.com/docs/firestore)
 
 ## Coded with ❤️ by
 
