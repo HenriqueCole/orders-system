@@ -20,3 +20,11 @@ This is a simple example of a web application that uses the firebase-admin and f
 ## Coded with ❤️ by
 
 - [@HenriqueCole](https://www.github.com/HenriqueCole)
+
+## Technologies
+
+- [Node.js](https://nodejs.org/en/)
+- [Express](https://expressjs.com/)
+- [Firebase](https://firebase.google.com/)
+- [JavaScript](https://www.javascript.com/)
+- [Postman](https://www.postman.com/)
