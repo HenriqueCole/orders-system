@@ -142,7 +142,9 @@ async function removeQuantity(id, data) {
 
   if (newQuantity === 0) {
     await crud.remove("OrderProducts", orderProductExists.id);
-    return orderProductExists;
+    throw {
+      message: "The product was removed from the order",
+    };
   } else if (newQuantity < 0) {
     throw {
       Error: `You can not remove more products than you have in the order.`,
