@@ -23,6 +23,34 @@ async function createOrderProduct(data) {
     Quantity: data.Quantity,
   };
 
+  if (!orderProduct.OrderId) {
+    throw {
+      error: "0001",
+      message: "The field OrderId is empty",
+      necessaryFields: ["OrderId"],
+    };
+  } else if (!orderProduct.ProductId) {
+    throw {
+      error: "0001",
+      message: "The field ProductId is empty",
+      necessaryFields: ["ProductId"],
+    };
+  } else if (!orderProduct.Quantity) {
+    throw {
+      error: "0001",
+      message: "The field Quantity is empty",
+      necessaryFields: ["Quantity"],
+    };
+  }
+
+  if (typeof orderProduct.Quantity !== "number") {
+    throw {
+      error: "0002",
+      message: "The field Quantity expects a number",
+      necessaryFields: ["Quantity"],
+    };
+  }
+
   const order = orders.find((order) => order.id === orderProduct.OrderId);
   if (!order) {
     throw {
@@ -86,6 +114,34 @@ async function removeQuantity(id, data) {
     ProductId: data.ProductId,
     Quantity: data.Quantity,
   };
+
+  if (!orderProduct.OrderId) {
+    throw {
+      error: "0001",
+      message: "The field OrderId is empty",
+      necessaryFields: ["OrderId"],
+    };
+  } else if (!orderProduct.ProductId) {
+    throw {
+      error: "0001",
+      message: "The field ProductId is empty",
+      necessaryFields: ["ProductId"],
+    };
+  } else if (!orderProduct.Quantity) {
+    throw {
+      error: "0001",
+      message: "The field Quantity is empty",
+      necessaryFields: ["Quantity"],
+    };
+  }
+
+  if (typeof orderProduct.Quantity !== "number") {
+    throw {
+      error: "0002",
+      message: "The field Quantity expects a number",
+      necessaryFields: ["Quantity"],
+    };
+  }
 
   const orderProductExists = orderProducts.find(
     (orderProduct) =>
