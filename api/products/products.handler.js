@@ -1,6 +1,19 @@
 const crud = require("../../crud");
 
 async function createProduct(product) {
+  if (!product.Name) {
+    throw {
+      error: "0001",
+      message: "The field Name is empty",
+      necessaryFields: ["Name"],
+    };
+  } else if (!product.Price) {
+    throw {
+      error: "0001",
+      message: "The field Price is empty",
+      necessaryFields: ["Price"],
+    };
+  }
   const savedProduct = await crud.post("Products", null, product);
   return savedProduct;
 }
