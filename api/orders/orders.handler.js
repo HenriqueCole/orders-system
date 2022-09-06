@@ -10,6 +10,14 @@ async function createOrder(data) {
     UserId: data.UserId,
   };
 
+  if (!order.UserId) {
+    throw {
+      error: "0001",
+      message: "The field UserId is empty",
+      necessaryFields: ["UserId"],
+    };
+  }
+
   const user = users.find((user) => user.id === order.UserId);
 
   if (!user) {
